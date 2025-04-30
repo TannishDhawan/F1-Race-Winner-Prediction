@@ -26,6 +26,9 @@ python f1.py(file name) --years 2022 2023 2024 --year 2024 --race "Japanese Gran
 python f1.py(file name) --predict-only --year 2023 --race "Japanese Grand Prix"
 
 Model Evaluation:
+
 Accuracy     : 0.9894
+
 Log Loss     : 0.0358
+
 ROC AUC      : 0.9935
