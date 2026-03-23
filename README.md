@@ -1,34 +1,39 @@
 F1 Race Winner Prediction
 
-Predict the winner of Formula 1 races using historical data and machine learning.
+Predict the winner of Formula 1 races using historical telemetry data, weather analysis, and machine learning.
 
-Features
-Historical Data Collection: Fetches race, qualifying, and sprint session data from FastF1's API.
+## Features
 
-Feature Engineering:
+**Historical Data Collection:**
+Fetches Race, Qualifying, Sprint, and Free Practice telemetry from FastF1's API.
 
-Driver statistics (average qualifying position, points in last 3 races, win rate)
+**Feature Engineering:**
+*   **Driver Statistics:** Rolling averages for finishing position, points, and position gains.
+*   **Advanced Metrics:** Dynamic ELO ratings, Long Run practice pace gaps, and precise Qualifying time deltas.
+*   **Context:** Weather data (rain detection), Circuit-specific history, and Team performance trends.
 
-Team performance metrics (average points, qualifying performance)
+**Machine Learning Model:**
+`HistGradientBoostingRegressor` optimized for ranking and probability estimation.
 
-Circuit-specific historical performance
+**Prediction:**
+Generates win probabilities and predicted finishing positions based on current weekend data.
 
-Machine Learning Model: HistGradientBoostingClassifier with probability calibration.
+## Usage
 
-Prediction: Predict winners for upcoming races using qualifying data and historical trends.
+### 1. Training the Model
+Train the model with data from specific years.
+python main.py --train --years 2022 2023 2024 2025
 
-Usage
-1. Training the Model - Train the model with data from specific years:
-python f1.py(file name) --years 2022 2023 2024
-2. Training + Prediction - Train and predict for a specific race:
-python f1.py(file name) --years 2022 2023 2024 --year 2024 --race "Japanese Grand Prix"
-3. Prediction Only (Using Pre-Trained Model)
-python f1.py(file name) --predict-only --year 2023 --race "Japanese Grand Prix"
+Train + Predict a race.
+python main.py --train --years 2022 2023 2024 --predict --year 2026 --race "Japanese Grand Prix"
+
+Predict only.
+python main.py --predict --year 2026 --race "Japanese Grand Prix"
 
 Model Evaluation:
+Trained on 92 races (2022–2025 seasons). Evaluated on the final 13 races of 2025 (held-out test set):
 
-Accuracy     : 0.9894
-
-Log Loss     : 0.0358
-
-ROC AUC      : 0.9935
+Position MAE:         3.35 places
+Winner predicted #1:  9/13  (69%)
+Winner in top 3:      12/13 (92%)
+Winner in top 5:      13/13 (100%)

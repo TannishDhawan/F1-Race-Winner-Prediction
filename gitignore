@@ -1,0 +1,7 @@
+cache/
+yearly_cache/
+__pycache__/
+*.pyc
+*.pkl
+f1_history.csv
+.DS_Store
