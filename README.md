@@ -9,7 +9,7 @@ Fetches Race, Qualifying, Sprint, and Free Practice telemetry from FastF1's API.
 
 **Feature Engineering:**
 *   **Driver Statistics:** Rolling averages for finishing position, points, and position gains.
-*   **Advanced Metrics:** Dynamic ELO ratings, Long Run practice pace gaps, and precise Qualifying time deltas.
+*   **Advanced Metrics:** Long Run practice pace gaps, and precise Qualifying time deltas.
 *   **Context:** Weather data (rain detection), Circuit-specific history, and Team performance trends.
 
 **Machine Learning Model:**
